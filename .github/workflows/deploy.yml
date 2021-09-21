@@ -8,6 +8,7 @@ jobs:
     name: Merge develop to mainline
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/checkout@v2
       - name: Merge to mainline
         run: |
           git checkout mainline

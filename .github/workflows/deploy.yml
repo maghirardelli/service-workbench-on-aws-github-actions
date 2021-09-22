@@ -1,0 +1,20 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  merge-develop-to-mainline:
+    name: Merge develop to mainline
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge to mainline
+        run: |
+          git checkout mainline
+          echo
+          echo "  Attempting to merge the 'develop' branch ($(git log -1 --pretty=%H develop))"
+          echo "  into the 'mainline' branch ($(git log -1 --pretty=%H mainline))"
+          echo
+          git merge --ff-only --no-edit develop
+          git push origin mainline

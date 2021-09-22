@@ -4,6 +4,12 @@ on:
     branches:
       - develop
 jobs:
+  check-beta-in-changelog:
+    name: Check Beta status
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Check if Beta is present
+        run: ./scripts/check-and-add-beta.sh
   merge-develop-to-mainline:
     name: Merge develop to mainline
     runs-on: ubuntu-18.04
@@ -14,7 +20,6 @@ jobs:
           fetch-depth: 0
       - name: Merge to mainline
         run: |
-          git log
           git fetch
           git checkout mainline
           echo

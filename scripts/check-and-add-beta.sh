@@ -29,6 +29,6 @@ else
     fi
     # Commit new changelog
     git add CHANGELOG.md
-    git commit -m $commitMessage
+    git commit -m "$commitMessage"
     git push origin develop
 fi

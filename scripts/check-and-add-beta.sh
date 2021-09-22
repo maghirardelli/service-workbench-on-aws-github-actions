@@ -10,7 +10,10 @@ then
     # Do nothing
     echo "Nothing to change in changelog--still Beta"
 else
+    git config --local user.email "action@github.com"
+    git config --local user.name "GitHub Action"
     git checkout develop
+    git push origin develop
     # Check to see if the file contains the word Beta in a header
     if (cat CHANGELOG.md | grep -q '^## Beta')
     then
@@ -32,8 +35,6 @@ q" > add-beta.ed
         commitMessage="Add Beta"
     fi
     # Commit new changelog
-    git config --local user.email "action@github.com"
-    git config --local user.name "GitHub Action"
     git add CHANGELOG.md
     git commit -m "$commitMessage"
     # git push origin develop

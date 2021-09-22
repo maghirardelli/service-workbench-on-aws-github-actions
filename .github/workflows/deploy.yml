@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{secrets.MERGE_TOKEN}}
       - name: Merge to mainline
         run: |
+          git log
           git checkout mainline
           echo
           echo "  Attempting to merge the 'develop' branch ($(git log -1 --pretty=%H develop))"

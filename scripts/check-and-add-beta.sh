@@ -24,7 +24,14 @@ else
         # sed -i -e '0,s/.*[0-9]\.[0-9]\.[0-9].*/## Beta\n\n&/' CHANGELOG.md
         # perl -i -l -e 'print "## Beta\n" if $. == 5' CHANGELOG.md
         # awk 'NR==5{print "## Beta\n"}1' CHANGELOG.md > CHANGELOG.md
+        echo "5i
+## Beta
+
+.
+w
+q" > add-beta.ed
         ed CHANGELOG.md < add-beta.ed
+        rm add-beta.ed
         commitMessage="Add Beta"
     fi
     # Commit new changelog

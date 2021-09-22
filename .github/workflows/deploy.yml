@@ -13,6 +13,7 @@ jobs:
   merge-develop-to-mainline:
     name: Merge develop to mainline
     runs-on: ubuntu-18.04
+    needs: check-beta-in-changelog
     steps:
       - uses: actions/checkout@v2
         with:

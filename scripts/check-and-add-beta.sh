@@ -36,5 +36,5 @@ q" > add-beta.ed
     git config --local user.name "GitHub Action"
     git add CHANGELOG.md
     git commit -m "$commitMessage"
-    git push origin develop
+    # git push origin develop
 fi

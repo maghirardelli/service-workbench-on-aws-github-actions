@@ -1,6 +1,6 @@
 {
   "name": "service-workbench-on-aws-github-actions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Same to test github actions on",
   "main": "index.js",
   "scripts": {

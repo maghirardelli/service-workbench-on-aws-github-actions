@@ -13,7 +13,6 @@ else
     git config --local user.email "action@github.com"
     git config --local user.name "GitHub Action"
     git checkout develop
-    git push origin develop
     # Check to see if the file contains the word Beta in a header
     if (cat CHANGELOG.md | grep -q '^## Beta')
     then
@@ -37,5 +36,5 @@ q" > add-beta.ed
     # Commit new changelog
     git add CHANGELOG.md
     git commit -m "$commitMessage"
-    # git push origin develop
+    git push origin develop
 fi

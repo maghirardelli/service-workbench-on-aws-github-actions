@@ -13,28 +13,21 @@ else
     git config --local user.email "action@github.com"
     git config --local user.name "GitHub Action"
     git checkout develop
-    # Check to see if the file contains the word Beta in a header
-    if (cat CHANGELOG.md | grep -q '^## Beta')
-    then
-        # Delete it
-        echo "Delete Beta"
-        sed -i -e "/Beta/,+1 d" CHANGELOG.md
-        commitMessage="Delete Beta"
-    else
-        # Add it
-        echo "Need to add to changelog"
-        echo "5i
+    # Add Beta header to changelog
+    echo "Need to add to changelog"
+    # Create ed file
+    echo "5i
 ## Beta
 
 .
 w
 q" > add-beta.ed
-        ed CHANGELOG.md < add-beta.ed
-        rm add-beta.ed
-        commitMessage="Add Beta"
-    fi
-    # Commit new changelog
+    # Change CHANGELOG.md with ed file
+    ed CHANGELOG.md < add-beta.ed
+    # delete ed file
+    rm add-beta.ed
+    # Commit and push new changelog
     git add CHANGELOG.md
-    git commit -m "$commitMessage"
+    git commit -m "Add Beta"
     git push origin develop
 fi

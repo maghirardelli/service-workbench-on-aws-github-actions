@@ -28,6 +28,8 @@ else
         commitMessage="Add Beta"
     fi
     # Commit new changelog
+    git config --local user.email "action@github.com"
+    git config --local user.name "GitHub Action"
     git add CHANGELOG.md
     git commit -m "$commitMessage"
     git push origin develop

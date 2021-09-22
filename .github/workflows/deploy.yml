@@ -6,6 +6,7 @@ on:
 jobs:
   check-beta-in-changelog:
     name: Check Beta status
+    if: ${{ github.actor != "GitHub Action" }}
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2

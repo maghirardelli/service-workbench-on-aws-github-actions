@@ -1,0 +1,20 @@
+{
+  "name": "service-workbench-on-aws-github-actions",
+  "version": "1.0.0",
+  "description": "Same to test github actions on",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maghirardelli/service-workbench-on-aws-github-actions.git"
+  },
+  "author": "Marianna Ghirardelli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maghirardelli/service-workbench-on-aws-github-actions/issues"
+  },
+  "homepage": "https://github.com/maghirardelli/service-workbench-on-aws-github-actions#readme"
+}

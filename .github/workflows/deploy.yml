@@ -4,21 +4,9 @@ on:
     branches:
       - develop
 jobs:
-  check-beta-in-changelog:
-    name: Check Beta status
-    if: "!contains(github.event.head_commit.message, 'chore(release):')"
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{secrets.MERGE_TOKEN}}
-          fetch-depth: 0
-      - name: Check if Beta is present
-        run: ./scripts/check-and-add-beta.sh
   merge-develop-to-mainline:
     name: Merge develop to mainline
     runs-on: ubuntu-18.04
-    needs: check-beta-in-changelog
     steps:
       - uses: actions/checkout@v2
         with:
@@ -34,3 +22,15 @@ jobs:
           echo
           git merge --ff-only --no-edit develop
           git push origin mainline
+  check-beta-in-changelog:
+    name: Check Beta status
+    if: "!contains(github.event.head_commit.message, 'chore(release):')"
+    needs: merge-develop-to-mainline
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{secrets.MERGE_TOKEN}}
+          fetch-depth: 0
+      - name: Check if Beta is present
+        run: ./scripts/check-and-add-beta.sh

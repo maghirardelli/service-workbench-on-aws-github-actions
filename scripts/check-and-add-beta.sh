@@ -21,9 +21,6 @@ else
     else
         # Add it
         echo "Need to add to changelog"
-        # sed -i -e '0,s/.*[0-9]\.[0-9]\.[0-9].*/## Beta\n\n&/' CHANGELOG.md
-        # perl -i -l -e 'print "## Beta\n" if $. == 5' CHANGELOG.md
-        # awk 'NR==5{print "## Beta\n"}1' CHANGELOG.md > CHANGELOG.md
         echo "5i
 ## Beta
 

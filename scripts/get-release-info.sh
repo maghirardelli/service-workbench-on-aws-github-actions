@@ -13,7 +13,8 @@ echo $versionNumber
 # Get version date (or generate if beta)
 if [ "$versionNumber" == "Beta" ]
 then
-    versionDate="$(date +'%Y-%m-%d')"
+    latestReleaseVersion="$(cat CHANGELOG.md | grep -o "[0-9]\.[0-9]\.[0-9]" | head -n 1)"
+    versionDate="Latest Release Version: $latestReleaseVersion"
 else
     versionDate="$(echo $versionLine | grep -o "[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]")"
 fi

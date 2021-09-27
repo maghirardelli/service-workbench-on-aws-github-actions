@@ -3,17 +3,17 @@ set -e
 STAGE="test"
 
 # Get the first header (not Changelog) in CHANGELOG.md
-versionLine="$(cat CHANGELOG.md | grep -m 1 "[0-9]\.[0-9]\.[0-9]\|Beta")"
+versionLine="$(cat CHANGELOG.md | grep -m 1 "[0-9]\+\.[0-9]\+\.[0-9]\+\|Beta")"
 echo $versionLine
 
 # Get version number
-versionNumber="$(echo $versionLine | grep -o "[0-9]\.[0-9]\.[0-9]\|Beta" | head -n 1)"
+versionNumber="$(echo $versionLine | grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\|Beta" | head -n 1)"
 echo $versionNumber
 
 # Get version date (or generate if beta)
 if [ "$versionNumber" == "Beta" ]
 then
-    latestReleaseVersion="$(cat CHANGELOG.md | grep -o "[0-9]\.[0-9]\.[0-9]" | head -n 1)"
+    latestReleaseVersion="$(cat CHANGELOG.md | grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+" | head -n 1)"
     versionDate="Latest Release Version: $latestReleaseVersion"
 else
     versionDate="$(echo $versionLine | grep -o "[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]")"
@@ -29,9 +29,9 @@ then
     if (cat "$FILE" | grep -q "versionDate") && (cat "$FILE" | grep -q "versionNumber")
     then
         # Yes-->Are they different from above?
-        oldVersionNumber="$(cat "$FILE" | grep -o "[0-9]\.[0-9]\.[0-9]\|Beta" | head -n 1)"
+        oldVersionNumber="$(cat "$FILE" | grep -o "[0-9]\+\.[0-9]\+\.[0-9]\+\|Beta" | head -n 1)"
         echo $oldVersionNumber
-        oldVersionDate="$(cat "$FILE" | grep -o "[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]")"
+        oldVersionDate="$(cat "$FILE" | grep -o "[0-9][0-9][0-9][0-9]\-[0-9][0-9]\-[0-9][0-9]\|Latest Release Version: [0-9]\.[0-9]\.[0-9]")"
         echo $oldVersionDate
         if ([ "$oldVersionNumber" != "$versionNumber" ]) || ([ "$oldVersionDate" != "$versionDate" ])
         then

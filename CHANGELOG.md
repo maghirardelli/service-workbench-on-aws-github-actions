@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## Beta
-[This release is in beta. Click here to see changes since 1.0.1.](https://github.com/maghirardelli/service-workbench-on-aws-github-actions/compare/v1.0.1...mainline)
+[This release is in beta. Click here to see changes since 1.0.10.](https://github.com/maghirardelli/service-workbench-on-aws-github-actions/compare/v1.0.10...mainline)
 
 ### [1.0.10](https://github.com/maghirardelli/service-workbench-on-aws-github-actions/compare/v1.0.9...v1.0.10) (2021-09-27)
 

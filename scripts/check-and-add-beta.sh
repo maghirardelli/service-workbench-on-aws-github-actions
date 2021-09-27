@@ -10,8 +10,8 @@ then
     # Do nothing
     echo "Nothing to change in changelog--still Beta"
 else
-    # git config --local user.email "action@github.com"
-    # git config --local user.name "GitHub Action"
+    git config --local user.email "action@github.com"
+    git config --local user.name "GitHub Action"
     git checkout develop
     # Add Beta header to changelog
     echo "Need to add to changelog"
